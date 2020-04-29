@@ -13,7 +13,7 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/shea_util.ncl"
 load "$WORK/ncl_scripts/tickmarks.ncl" ; for LambertEqualArea plots
-;******************************************************************************************************************
+;*****************************************************************************************
 
  err = NhlGetErrorObjectId() 
  
