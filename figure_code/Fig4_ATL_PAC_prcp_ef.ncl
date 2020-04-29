@@ -485,13 +485,13 @@ end do ; k
  resTS@trYMaxF  	= 4.6		       ; max value on y-axis
  resTS@gsnLeftStringFontHeightF 	= 0.02
  resTS@gsnLeftStringOrthogonalPosF 	= 0.02
- resTS@gsnLeftString 	= "~F22~c"
- resTS@gsnCenterString 	= "Precipitation"
+ resTS@gsnLeftString 			= "~F22~c"
+ resTS@gsnCenterString 			= "Precipitation"
  resTS@gsnCenterStringFontHeightF 	= 0.02
  
- resTS@tiYAxisString 	= "mm day~S~-1~N~"
+ resTS@tiYAxisString 		= "mm day~S~-1~N~"
  resTS@tiYAxisFontHeightF 	= 0.015
- resTS@tiXAxisString 	= "Month"
+ resTS@tiXAxisString 		= "Month"
  resTS@tiXAxisFontHeightF 	= 0.015 
 
  maps(2)  =  gsn_csm_xy (wks,month_list,prcp_both,resTS) ; create plot
