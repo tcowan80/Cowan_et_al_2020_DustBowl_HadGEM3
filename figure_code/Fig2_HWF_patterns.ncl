@@ -24,7 +24,7 @@ begin
 
 ;******************************************************************************************************************
 ; variables to set
-mets 		= (/"hwf","hwaa"/)
+mets 		= (/"hwf"/)
 nmets 		= dimsizes(mets)
 met_names 	= oneDtostring(mets)
 met_names 	= str_sub_str(met_names, ",", "_")
@@ -32,16 +32,13 @@ years 		= ispan(1930,1937,1) ; for the 1930s
 nyears 		= dimsizes(years)
 
 dset 		= "HadGEM3"
-type 		= "hottest"
 runs 		= (/"GHCN","xmvq_hA-cP","xmvq_hP-cA","xmvp","xmvqu_r69_soil","xmvqt_r69_soil"/) ; ,"xmvqs_r69_soil"/)
 nruns 		= dimsizes(runs)
 regi 		= "gp"
 top_rankd 	= years(dimsizes(years)-1) - years(0) + 1; 8
 getseas 	= 2 ; JJA
 gettype 	= 2 ; hottest HW
-
 stat_test 	= "mwu"
-ks_test 	= "no"
 
 if (regi.eq."gp") then
  latS 	= 30
@@ -493,7 +490,7 @@ end do ; j
 if (stat_test.eq."mwu") then
 
  Mfile = "M_array_"+dset+"_"+met_names+"_top_rankd_"+top_rankd+\
- 	"_"+type+"_usa_JJA_from_daily_95pctl_"+years(0)+"-"+\
+ 	"_hottest_usa_JJA_from_daily_95pctl_"+years(0)+"-"+\
 	years(dimsizes(years)-1)+"_"+stat_test+".nc"
 
  if (.not.fileexists(Mfile)) then
