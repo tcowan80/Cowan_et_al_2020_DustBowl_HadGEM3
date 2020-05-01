@@ -67,8 +67,8 @@ begin
  res@cnFillOn		= True     ; turn on color fill
  res@cnLinesOn		= False    ; turn off contour lines
  res@cnLevelSelectionMode	= "ManualLevels"     ; set manual contour levels
- res@lbLabelFontHeightF	= 0.03
- res@lbTitleFontHeightF	= 0.03
+ res@lbLabelFontHeightF	= 0.02
+ res@lbTitleFontHeightF	= 0.02
  res@lbTitlePosition 	= "Bottom"
  res@lbBoxEndCapStyle 	= "TriangleBothEnds"
  res@lbTitleString 	= "m" ; Z500 units
@@ -93,8 +93,8 @@ begin
  res@tmXBLabelsOn 	= False
  res@tmYRLabelsOn 	= False
  res@tmXTLabelsOn	= False
- res@tmYRLabelFontHeightF 	= 0.04
- res@tmXBLabelFontHeightF 	= 0.04 
+ res@tmYRLabelFontHeightF 	= 0.02
+ res@tmXBLabelFontHeightF 	= 0.02
  res@tmXBMinorOn	= False 	  ; no lon minor tickmarks
  res@tmYLMinorOn	= False 	  ; no lon minor tickmarks
  res@tmYUseLeft 	= False
@@ -116,7 +116,7 @@ begin
  res@mpGridLineDashPattern	= 2  
  res@mpGridLineThicknessF 	= 0.25
 
- res@tiYAxisFontHeightF = 0.04
+ res@tiYAxisFontHeightF = 0.01
  res@tiYAxisFontColor 	= "black"
 
  res@cnFillPalette	= "BlueDarkRed18"  ; contour color palette
@@ -128,8 +128,8 @@ begin
 ; map resources for lat/lon labels
  tmres 			= True
  tmres@tmXBValues 	= ispan(-135,-30,30) ; values of longitudes
- tmres@tmXBLabelFontHeightF = 0.025    ; label font heights
- tmres@tmYRLabelFontHeightF = 0.025    ; label font heights
+ tmres@tmXBLabelFontHeightF = 0.015    ; label font heights
+ tmres@tmYRLabelFontHeightF = 0.015    ; label font heights
  tmres@YUseLeft 	= False
  tmres@tmYRValues 	= ispan(10,50,10)    ; values of latitudes
 ;******************************************************************************************************************
@@ -151,7 +151,7 @@ begin
  sres@cnLineLabelPlacementMode 	= "constant"
  sres@cnInfoLabelOn   		= True			  ; turn off contour label
  sres@cnInfoLabelOrthogonalPosF = -0.1
- sres@cnInfoLabelFontHeightF 	= 0.015
+ sres@cnInfoLabelFontHeightF 	= 0.017
 ;********************************************************************************************************************
 
 ;******************************************************************************************************************** 
