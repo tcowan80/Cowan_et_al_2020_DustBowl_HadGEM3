@@ -135,7 +135,7 @@ end if
  res_vc@pmTickMarkDisplayMode 	= "Always"  	 ; turn on fancy tickmarks
  res_vc@cnLineLabelsOn 		= False
 
- res_vc@vcRefAnnoOrthogonalPosF = -0.68		; move ref vector up
+ res_vc@vcRefAnnoOrthogonalPosF = -0.733		; move ref vector up
  res_vc@vcRefMagnitudeF	     	= 5.0		; define vector ref mag
  res_vc@vcRefLengthF	     	= 0.045		; define length of vec ref
  res_vc@vcGlyphStyle	    	= "CurlyVector"	; turn on curly vectors
@@ -144,7 +144,7 @@ end if
  res_vc@vcLineArrowThicknessF   = 0.5		 ; change vector thickness
  res_vc@vcRefAnnoString1On 	= True
  res_vc@vcRefAnnoString1 	= "5 g kg~S~-1~N~ m s~S~-1~N~"
- res_vc@vcRefAnnoFontHeightF 	= 0.015
+ res_vc@vcRefAnnoFontHeightF 	= 0.02
  res_vc@vcRefAnnoString2On 	= False
  res_vc@vcRefAnnoSide          	= "Bottom"
 ;******************************************************************************************************************
@@ -261,6 +261,7 @@ do i=0,dimsizes(vars)-1
   res@vpYF     		= 0.8		      ; start plot at y ndc coord   
   res@gsnLeftString 	= "~F22~a"
   res@gsnLeftStringFontHeightF = 0.02
+  res@lbBoxEndCapStyle 	= "TriangleBothEnds"
  end if
  if (var.eq."ef") then
   res@cnMinLevelValF	:= -0.8  	      ; set min contour level
@@ -274,6 +275,7 @@ do i=0,dimsizes(vars)-1
   res@tiMainOffsetXF 	= -0.23
   res@tiMainFontHeightF = 0.025
   res@gsnLeftString 	= "~F22~b" 
+  res@lbBoxEndCapStyle 	= "RectangleEnds"
  end if 
 
  res@gsnCenterString 	= long_name  ; add long name to center string
