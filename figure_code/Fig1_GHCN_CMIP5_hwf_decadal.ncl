@@ -103,11 +103,12 @@ end if
 
  res@tiMainFont   		= "helvetica" 	
 
- res@lbTitleString 		= "~S~o~N~C" ; bar title
+ res@lbTitleString 		= "SST anomalies (~S~o~N~C)" ; bar title
  res@lbTitleFontHeightF 	= 0.015
  res@lbLabelFontHeightF 	= 0.012
  res@lbTitlePosition	 	= "Bottom"	; title location
  res@lbTitleDirection	  	= "Across"
+ res@lbBoxEndCapStyle 		= "TriangleBothEnds"
 
  res@pmLabelBarHeightF 		= 0.075
  res@pmLabelBarWidthF 		= 0.6
@@ -155,17 +156,20 @@ end if
  res2@cnLineLabelsOn 		= True
  res2@cnInfoLabelOn		= False    ; turn of contour info labels
  res2@cnLineLabelDensityF 	= 2.1
- res2@cnLineLabelBackgroundColor = -1
+ res2@cnLineLabelBackgroundColor= -1
  res2@cnLineLabelFontHeightF 	= 0.01
  res2@cnFillColors 		= (/12,14,16,18,19,21/)
   
+ res2@lbLabelBarOn 		= False
  res2@pmLabelBarHeightF 	= 0.075
-
- res2@lbLabelBarOn 		= False 
- res2@lbTitleString 		= "~S~o~N~C" ; bar title 
- res2@lbTitleFontHeightF	= 0.015
+ res2@pmLabelBarWidthF 		= 0.6; 0.6
+ res2@pmLabelBarParallelPosF 	= 0.3; 1.05           ; move labelbar across
+ res2@pmLabelBarOrthogonalPosF 	= 0.10          ; move labelbar down
+ res2@lbTitleString 		= "days per summer" ; bar title 
+ res2@lbTitleFontHeightF	= 0.02; 0.015
  res2@lbTitlePosition	  	= "Bottom"			       ; title location
  res2@lbTitleDirection	  	= "Across"			      ; letter angle  
+ res2@lbBoxEndCapStyle 		= "TriangleBothEnds"
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -182,6 +186,27 @@ end if
  gsres@gsnTickMarksOn  		= False          ; turn off tickmark
  gsres@mpGridLineDashPattern  	= 2
  gsres@mpCenterLonF	  	= 260 
+;******************************************************************************************************************
+
+;******************************************************************************************************************
+; resources for labelbar for HWF (panels b and c)
+ lbres_colors    		= (/12,14,16,18,19,21/) ; for "WhiteYellowOrangeRed" 
+ lbres  		       	= True 
+ lbres@vpWidthF 	       	= 0.3   	; width
+ lbres@vpHeightF	       	= 0.075   	; height
+ lbres@lbPerimOn	       	= False  	  ; Turn off perimeter.
+ lbres@lbOrientation	       	= "Horizontal"	; Default is vertical.
+ lbres@lbLabelAlignment        	= "InteriorEdges"  ; Default is "BoxCenters".
+ lbres@lbTitleString	       	= "HWF (days per summer)"
+ lbres@lbMonoFillPattern       	= True		  ; Fill them all solid.
+ lbres@lbLabelFontHeightF      	= 0.012		; label font height
+ lbres@lbTitlePosition         	= "Top"	 ; title location
+ lbres@lbTitleDirection        	= "Across"
+ lbres@lbTitleFontHeightF      	= 0.012	           ; font height
+ lbres@lbAutoManage	       	= False  	   ; we control label bar
+ lbres@lbLabelStride	       	= 1	
+ lbres@lbFillColors	       	= lbres_colors 	     ; Colors for boxes.
+ lbres@lbBoxEndCapStyle 	= "TriangleHighEnd"
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -219,8 +244,6 @@ end if
  resTS@gsnLeftStringOrthogonalPosF 	= 0.02
  resTS@gsnLeftStringFontHeightF 	= 0.015
  resTS@gsnCenterStringFontHeightF 	= 0.015
- resTS@gsnAboveYRefLineColor 	= "red"              ; above ref line fill red
- resTS@gsnBelowYRefLineColor 	= "blue"             ; below ref line fill blue
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -231,16 +254,16 @@ end if
 
 ;******************************************************************************************************************
 ; directories
- ghcn_dir 	= "$WORK/NatCC_wah_2019/data/GHCN/" ; files in fig1_ghcn_hw_files.tgz
- amo_pdo_dir 	= "$WORK/NatComms_HadGEM_2019/data/CMIP5/piControl/AMO_PDO/" ; files in fig1_cmip5_piControl_drivers.tgz
- cmip5_pi_dir 	= "$WORK/NatComms_HadGEM_2019/data/CMIP5/piControl/" ; files in fig1_cmip5_piControl_hwf.tgz
- cmip5_sst_dir 	= "$WORK/NatComms_HadGEM_2019/data/CMIP5/SST_patterns/" ; files in list_of_SST_hwf_globe_gp_over50pct_max_time_pattern_1-500yrs_11years_rm_JJA_clashes_removed_with_years_HWF_values.txt
+; ghcn_dir 	= "$WORK/NatCC_wah_2019/data/GHCN/" ; files in fig1_ghcn_hw_files.tgz
+; amo_pdo_dir 	= "$WORK/NatComms_HadGEM_2019/data/CMIP5/piControl/AMO_PDO/" ; files in fig1_cmip5_piControl_drivers.tgz
+; cmip5_pi_dir 	= "$WORK/NatComms_HadGEM_2019/data/CMIP5/piControl/" ; files in fig1_cmip5_piControl_hwf.tgz
+; cmip5_sst_dir = "$WORK/NatComms_HadGEM_2019/data/CMIP5/SST_patterns/" ; files in list_of_SST_hwf_globe_gp_over50pct_max_time_pattern_1-500yrs_11years_rm_JJA_clashes_removed_with_years_HWF_values.txt
 ;******************************************************************************************************************
  
 ;******************************************************************************************************************
 ; GHCN part for HWF calculations
 
- ghcn_fils 	= systemfunc ("ls "+ghcn_dir+"*hw_stats_from_daily_threshold_1920-2012_"+seas+"_from_1920-2012_clim.nc") ; file paths changed
+ ghcn_fils 	= systemfunc ("ls *hw_stats_from_daily_threshold_1920-2012_"+seas+"_from_1920-2012_clim.nc") ; file paths changed
  ghcn_dimfils 	= dimsizes(ghcn_fils)
  ghcn_ave_tmax 	= new((/11,ghcn_dimfils/),float)
  ghcn_ave_tmin 	= new((/11,ghcn_dimfils/),float)
@@ -358,18 +381,6 @@ do i=0,3
 
   maps(i) 			= gsn_csm_contour_map(wks,new_sst,res)
 
-; plot out GHCN-D HWF
-;  res2@vpXF            		= 0.05        
-;  res2@vpWidthF        		= 0.3	    
-;  res2@vpYF            		= 1.1
-;  res2@vpHeightF       		= 0.00001 ;;
-
-;  res2@cnMinLevelValF		= 4	  ; set min contour level
-;  res2@cnMaxLevelValF		= 20	  ; set max contour level
-;  res2@cnLevelSpacingF		= 4	  ; set contour spacing 
-;  res2@cnFixFillBleed 		= True
-;  res2@cnGridBoundFillColor 	= -1 ; "white"
-
   do iii=0, num_distinct_markers-1
    if (.not.ismissing(lat_new(iii,0)))
     gsres@gsMarkerColor      = ghcn_colors(iii)
@@ -391,8 +402,7 @@ do i=0,3
   gfdl_sst 		:= infile_sst->sst
   lat 			:= infile_sst->lat
   lon 			:= infile_sst->lon
-  hw_infile 		:= addfile(cmip5_pi_dir + \
-  			"usa_hw_stats_from_daily_threshold_1-500_JJA_from_1-500_clim.GFDL-ESM2G.nc","r")
+  hw_infile 		:= addfile("usa_hw_stats_from_daily_threshold_1-500_JJA_from_1-500_clim.GFDL-ESM2G.nc","r")
   hwf 			:= hw_infile->pezHWstats({286:296},:,:,2)  ; these are years over which the HW pattern is averaged
   avg_hwf 		:= dim_avg_n_Wrap(hwf,0)
   
@@ -426,13 +436,13 @@ do i=0,3
 
   maps2(3) 		= gsn_csm_contour(wks,avg_hwf,res2)
   
-  gsn_text_ndc(wks,"~F22~days/summer",0.49,0.215,txres)
-  gsn_text_ndc(wks,"~F22~0",0.365,0.187,txres)
-  gsn_text_ndc(wks,"~F22~4",0.415,0.187,txres)
-  gsn_text_ndc(wks,"~F22~8",0.465,0.187,txres)
-  gsn_text_ndc(wks,"~F22~12",0.515,0.187,txres)
-  gsn_text_ndc(wks,"~F22~16",0.56,0.187,txres)
-  gsn_text_ndc(wks,"~F22~20",0.61,0.187,txres)  
+;  gsn_text_ndc(wks,"~F22~days per summer",0.49,0.215,txres)
+;  gsn_text_ndc(wks,"~F22~0",0.365,0.187,txres)
+;  gsn_text_ndc(wks,"~F22~4",0.415,0.187,txres)
+;  gsn_text_ndc(wks,"~F22~8",0.465,0.187,txres)
+;  gsn_text_ndc(wks,"~F22~12",0.515,0.187,txres)
+;  gsn_text_ndc(wks,"~F22~16",0.56,0.187,txres)
+;  gsn_text_ndc(wks,"~F22~20",0.61,0.187,txres)  
   overlay(maps(i),maps2(3))
  end if ; i.gt.1
 ;-------------------------------------------------------------------------------------------------------------------------
@@ -500,7 +510,10 @@ do i=0,3
   obs_txx_anom_avg&time = year_obs
 
 ; do plot of TXx (first HadEX2)
-  resTS@gsnYRefLine	= avg(obs_txx_anom_avg)  ; create a reference line   
+  resTS@gsnYRefLine		= avg(obs_txx_anom_avg)  ; create a reference line   
+  resTS@gsnAboveYRefLineColor 	= "red"              ; above ref line fill red
+  resTS@gsnBelowYRefLineColor 	= "blue"             ; below ref line fill blue
+
   plot 			= gsn_csm_xy (wks,year_obs,obs_txx_anom_avg,resTS)  
 
   resTS@xyLineThicknessF= 3.0
@@ -510,9 +523,10 @@ do i=0,3
   resTS@tiXAxisString 	= ""
  
 ; plot CMIP5 TXx ensemble
-  resTS@xyLineColors 	= "brown"
-  years 		= ispan(1901,2005,1)
-  plot_cmip5 		= gsn_csm_xy (wks,years,avg_txx_anom_avg,resTS)        ; create plot
+  resTS@xyLineColors 		= "brown"
+  delete(resTS@gsnAboveYRefLineColor)
+  years 			= ispan(1901,2005,1)
+  plot_cmip5 			= gsn_csm_xy (wks,years,avg_txx_anom_avg,resTS)        ; create plot
 
   overlay(plot,plot_cmip5)
 
@@ -546,10 +560,10 @@ do i=0,3
  gsn_text_ndc(wks,"~F21~HadEX2",0.58,.89,txres)
  gsn_text_ndc(wks,"~F21~CMIP5",0.68,.89,txres)
 
- txres_leg 		= True
- txres_leg@txFontHeightF= 0.015 
- txres_leg@txAngleF   	= 90  
- gsn_text_ndc(wks,"~F21~HWF & SST anomalies",0.02,.4,txres_leg)
+; txres_leg 		= True
+; txres_leg@txFontHeightF= 0.015 
+; txres_leg@txAngleF   	= 90  
+; gsn_text_ndc(wks,"~F21~HWF & SST anomalies",0.02,.4,txres_leg)
 
 ; attach specialised legend txt to TXx plot
 ; HadEX2 legend
@@ -604,9 +618,9 @@ end if ; i.eq.2
 ; loop through each CMIP5 piControl run, and call in AMO, PDO and HW info 
   do k=0,nmodels_pic-1
    model_pic 		:= models_pic(k)
-   cvdp_file 		:= systemfunc("ls " + amo_pdo_dir + model_pic + "_Control.cvdp*")
-   obs_file 		:= systemfunc("ls " + amo_pdo_dir + "HadISST.1901-2010.nc")
-   hwf_file 		:= systemfunc("ls " + cmip5_pi_dir + "usa_hw_stats_from_daily**"+model_pic+".nc")
+   cvdp_file 		:= systemfunc("ls " + model_pic + "_Control.cvdp*")
+   obs_file 		:= systemfunc("ls " + "HadISST.1901-2010.nc")
+   hwf_file 		:= systemfunc("ls usa_hw_stats_from_daily**"+model_pic+".nc")
    cvdp_infile 		:= addfile(cvdp_file,"r")
    obs_infile 		:= addfile(obs_file,"r")
    hwf_infile 		:= addfile(hwf_file,"r")
@@ -761,11 +775,12 @@ end if ; i.eq.2
 
 ; do plot
   res@lbLabelBarOn	 = True  
-  res@lbTitleString	 = "days/summer" ; bar title
+  res@lbTitleString	 = "days per summer" ; bar title
   res@lbTitlePosition	 = "Right"
   res@lbTitleAngleF	 = 90
   res@lbTitleFontHeightF = 0.01
   res@lbLabelFontHeightF = 0.012
+  res@lbBoxEndCapStyle 	= "TriangleBothEnds"
   res@lbOrientation	 =   "vertical"     ; vertical label bar
   res@pmLabelBarWidthF   = 0.05
   res@pmLabelBarHeightF  = 0.3
@@ -792,7 +807,7 @@ end if ; i.eq.2
   res@tiYAxisString	= "AMO (normalized)"
   res@tiXAxisFontHeightF = 0.01
   res@tiYAxisFontHeightF = 0.01
-  res@gsnCenterString		= "~F22~d~F21~ CMIP5 piControl mean HWF"
+  res@gsnCenterString		= "~F22~d~F21~ CMIP5 piControl HWF"
   res@cnLevelSelectionMode	= "ExplicitLevels"   ; set explicit contour levels
   res@cnLevels		= (/4,5,6,7,8,9/)
   res@cnFillColors	= (/12,13,14,15,16,18,20/)
@@ -817,6 +832,8 @@ end if ; i.eq.2
  end if ; i.eq.3
 end do ; i 
 ;******************************************************************************************************************
+levels=ispan(4,20,4)
+gsn_labelbar_ndc (wks,dimsizes(lbres_colors),""+levels,0.215,0.25,lbres) 
 
 draw(wks)
 delete(wks)
