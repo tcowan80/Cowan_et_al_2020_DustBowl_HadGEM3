@@ -144,23 +144,24 @@ end if
 
 ;******************************************************************************************************************
 ; resources for labelbar
- colors    	= (/2,25,48,71,94,117,140,163,186,209,255/) ; for "WhiteYellowOrangeRed" 
- lbres  		       = True 
- lbres@vpWidthF 	       = 0.05   	; width
- lbres@vpHeightF	       = 0.35   	; height
- lbres@lbPerimOn	       = False  	  ; Turn off perimeter.
- lbres@lbOrientation	       = "Vertical"	; Default is vertical.
- lbres@lbLabelAlignment        = "InteriorEdges"  ; Default is "BoxCenters".
- lbres@lbTitleString	       = "days/summer"
- lbres@lbMonoFillPattern       = True		  ; Fill them all solid.
- lbres@lbLabelFontHeightF      = 0.01		; label font height
- lbres@lbTitlePosition         = "Right"	 ; title location
- lbres@lbTitleDirection        = "Across"
- lbres@lbTitleAngleF	       = 90
- lbres@lbTitleFontHeightF      = 0.01	           ; font height
- lbres@lbAutoManage	       = False  	   ; we control label bar
- lbres@lbLabelStride	       = 1	
- lbres@lbFillColors	       = colors 	     ; Colors for boxes.
+ colors    			= (/2,25,48,71,94,117,140,163,186,209,255/) ; for "WhiteYellowOrangeRed" 
+ lbres  		       	= True 
+ lbres@vpWidthF 	       	= 0.05   	; width
+ lbres@vpHeightF	       	= 0.35   	; height
+ lbres@lbPerimOn	       	= False  	  ; Turn off perimeter.
+ lbres@lbOrientation	       	= "Vertical"	; Default is vertical.
+ lbres@lbLabelAlignment        	= "InteriorEdges"  ; Default is "BoxCenters".
+ lbres@lbTitleString	       	= "days per summer"
+ lbres@lbMonoFillPattern       	= True		  ; Fill them all solid.
+ lbres@lbLabelFontHeightF      	= 0.01		; label font height
+ lbres@lbTitlePosition         	= "Right"	 ; title location
+ lbres@lbTitleDirection        	= "Across"
+ lbres@lbTitleAngleF	       	= 90
+ lbres@lbTitleFontHeightF      	= 0.01	           ; font height
+ lbres@lbAutoManage	       	= False  	   ; we control label bar
+ lbres@lbLabelStride	       	= 1	
+ lbres@lbFillColors	       	= colors 	     ; Colors for boxes.
+ lbres@lbBoxEndCapStyle 	= "TriangleHighEnd"
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -596,7 +597,7 @@ end if ; if (stat_test.eq."mwu") then
 
 resP		     	= True		       ; modify the panel plot
 resP@gsnFrame	      	= False		       ; don't advance panel plot
-resP@gsnPanelMainString = "~F21~ Summer heatwave frequency composite (1930-1937)" ; Heat wave frequency (HWF)"
+resP@gsnPanelMainString = "~F21~ Summer heatwave frequency (1930-1937)" ; Heat wave frequency (HWF)"
 resP@lbLabelFontHeightF = 0.01
 resP@lbTitleFontHeightF = 0.01
 resP@gsnPanelTop   	= 0.65 ; 0.95		 ; add space at bottom ; turn off ususally
