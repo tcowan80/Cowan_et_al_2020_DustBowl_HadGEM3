@@ -113,7 +113,7 @@ end if
  res@pmLabelBarHeightF 		= 0.075
  res@pmLabelBarWidthF 		= 0.6
  res@pmLabelBarParallelPosF 	= 1.05           ; move labelbar across
- res@pmLabelBarOrthogonalPosF 	= .20          ; move labelbar down
+ res@pmLabelBarOrthogonalPosF 	= .27          ; move labelbar down
 
  res@mpOutlineOn	    	= True
  res@mpPerimOn  	    	= False
@@ -200,7 +200,7 @@ end if
  lbres@lbTitleString	       	= "HWF (days per summer)"
  lbres@lbMonoFillPattern       	= True		  ; Fill them all solid.
  lbres@lbLabelFontHeightF      	= 0.012		; label font height
- lbres@lbTitlePosition         	= "Top"	 ; title location
+ lbres@lbTitlePosition         	= "Bottom"	 ; title location
  lbres@lbTitleDirection        	= "Across"
  lbres@lbTitleFontHeightF      	= 0.012	           ; font height
  lbres@lbAutoManage	       	= False  	   ; we control label bar
