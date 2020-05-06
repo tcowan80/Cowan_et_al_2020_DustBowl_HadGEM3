@@ -560,11 +560,6 @@ do i=0,3
  gsn_text_ndc(wks,"~F21~HadEX2",0.58,.89,txres)
  gsn_text_ndc(wks,"~F21~CMIP5",0.68,.89,txres)
 
-; txres_leg 		= True
-; txres_leg@txFontHeightF= 0.015 
-; txres_leg@txAngleF   	= 90  
-; gsn_text_ndc(wks,"~F21~HWF & SST anomalies",0.02,.4,txres_leg)
-
 ; attach specialised legend txt to TXx plot
 ; HadEX2 legend
  plres                 	=  True
@@ -702,7 +697,7 @@ end if ; i.eq.2
    else 
   
 ; get years of record-breaking HWFs 
-    mme_yrs_tmp 			:= mme_yrs(model_indx)
+    mme_yrs_tmp 		:= mme_yrs(model_indx)
     amo_pdo_indx 		:= get1Dindex(hwf_avg&time,mme_yrs_tmp)
     mme_pdo_vals(model_indx) 	= pdoAnn_vals(amo_pdo_indx)
     mme_amo_vals(model_indx) 	= amoAnn_vals(amo_pdo_indx)
@@ -753,14 +748,14 @@ end if ; i.eq.2
     hwf_amo_pdo(ii,jj) 	= dim_avg_n_Wrap(hwf2(indx),0)
     var_amo_pdo(ii,jj) 	= dim_variance(hwf2(indx))
     num_amo_pdo(ii,jj) 	= num(hwf2(indx))
-    prob(ii,jj) 		= ttest(avg(hwf2(indx)),dim_variance(hwf2(indx))\
+    prob(ii,jj) 	= ttest(avg(hwf2(indx)),dim_variance(hwf2(indx))\
    			,num(hwf2(indx)), avgX,varX,sX, False, False)
    end do ; ii
   end do ; jj
  
 ; give array attributes of PDO (x) and AMO (y) 
-  hwf_amo_pdo!0 		= "pdo"
-  hwf_amo_pdo!1 		= "amo"
+  hwf_amo_pdo!0 	= "pdo"
+  hwf_amo_pdo!1 	= "amo"
   hwf_amo_pdo&pdo 	= fspan(-4,4,32)
   hwf_amo_pdo&amo 	= fspan(-4,4,32) 
   copy_VarCoords(hwf_amo_pdo,prob)
@@ -778,10 +773,10 @@ end if ; i.eq.2
   res@lbTitleString	 = "days per summer" ; bar title
   res@lbTitlePosition	 = "Right"
   res@lbTitleAngleF	 = 90
-  res@lbTitleFontHeightF = 0.01
+  res@lbTitleFontHeightF = 0.012
   res@lbLabelFontHeightF = 0.012
-  res@lbBoxEndCapStyle 	= "TriangleBothEnds"
-  res@lbOrientation	 =   "vertical"     ; vertical label bar
+  res@lbBoxEndCapStyle 	 = "TriangleBothEnds"
+  res@lbOrientation	 = "vertical"     ; vertical label bar
   res@pmLabelBarWidthF   = 0.05
   res@pmLabelBarHeightF  = 0.3
   res@pmLabelBarParallelPosF	 = 0.5       ; move whole thing down
@@ -796,26 +791,26 @@ end if ; i.eq.2
   res@tmXTBorderOn	 = True 	     ; turn on  border
   res@tmYLBorderOn	 = True 	     ; turn on  border
   res@tmYRBorderOn	 = True 	     ; turn on  border
-  res@tmXBLabelFontHeightF	 = 0.01
-  res@tmYLLabelFontHeightF	 = 0.01
+  res@tmXBLabelFontHeightF	 = 0.012
+  res@tmYLLabelFontHeightF	 = 0.012
   res@tmXBPrecision	 = 1
   res@tmYLPrecision	 = 1
   res@cnLinesOn 	 = False    ; no contour lines
-  res@cnLineLabelsOn	= False    ; no contour line labels
-  res@cnInfoLabelOn	= False 
-  res@tiXAxisString	= "PDO (normalized)"
-  res@tiYAxisString	= "AMO (normalized)"
-  res@tiXAxisFontHeightF = 0.01
-  res@tiYAxisFontHeightF = 0.01
+  res@cnLineLabelsOn	 = False    ; no contour line labels
+  res@cnInfoLabelOn	 = False 
+  res@tiXAxisString	 = "PDO (normalized)"
+  res@tiYAxisString	 = "AMO (normalized)"
+  res@tiXAxisFontHeightF = 0.012
+  res@tiYAxisFontHeightF = 0.012
   res@gsnCenterString		= "~F22~d~F21~ CMIP5 piControl HWF"
   res@cnLevelSelectionMode	= "ExplicitLevels"   ; set explicit contour levels
-  res@cnLevels		= (/4,5,6,7,8,9/)
-  res@cnFillColors	= (/12,13,14,15,16,18,20/)
-  res@trXMinF		= -3.0
-  res@trXMaxF		= 3.0
-  res@trYMinF		= -3.0
-  res@trYMaxF		= 3.0 
-  plot_amo_pdo		= gsn_csm_contour (wks, hwf_amo_pdo(pdo|:,amo|:), res)
+  res@cnLevels		 = (/4,5,6,7,8,9/)
+  res@cnFillColors	 = (/12,13,14,15,16,18,20/)
+  res@trXMinF		 = -3.0
+  res@trXMaxF		 = 3.0
+  res@trYMinF		 = -3.0
+  res@trYMaxF		 = 3.0 
+  plot_amo_pdo		 = gsn_csm_contour (wks, hwf_amo_pdo(pdo|:,amo|:), res)
   
 ; add HadISST line
   polyres1			= True
