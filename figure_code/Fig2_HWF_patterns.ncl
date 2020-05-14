@@ -151,7 +151,7 @@ end if
  lbres@lbPerimOn	       	= False  	  ; Turn off perimeter.
  lbres@lbOrientation	       	= "Vertical"	; Default is vertical.
  lbres@lbLabelAlignment        	= "InteriorEdges"  ; Default is "BoxCenters".
- lbres@lbTitleString	       	= "days per summer"
+ lbres@lbTitleString	       	= "HWF (days per summer)"
  lbres@lbMonoFillPattern       	= True		  ; Fill them all solid.
  lbres@lbLabelFontHeightF      	= 0.01		; label font height
  lbres@lbTitlePosition         	= "Right"	 ; title location
@@ -597,7 +597,7 @@ end if ; if (stat_test.eq."mwu") then
 
 resP		     	= True		       ; modify the panel plot
 resP@gsnFrame	      	= False		       ; don't advance panel plot
-resP@gsnPanelMainString = "~F21~ Summer heatwave frequency (1930-1937)" ; Heat wave frequency (HWF)"
+; resP@gsnPanelMainString = "~F21~ Summer heatwave frequency (1930-1937)" ; figure title, now commented out.
 resP@lbLabelFontHeightF = 0.01
 resP@lbTitleFontHeightF = 0.01
 resP@gsnPanelTop   	= 0.65 ; 0.95		 ; add space at bottom ; turn off ususally

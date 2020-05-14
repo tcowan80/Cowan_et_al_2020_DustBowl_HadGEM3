@@ -71,7 +71,7 @@ begin
  res@lbTitleFontHeightF	= 0.02
  res@lbTitlePosition 	= "Bottom"
  res@lbBoxEndCapStyle 	= "TriangleBothEnds"
- res@lbTitleString 	= "m" ; Z500 units
+ res@lbTitleString 	= "Z500 (m)" ; Z500 units
  res@pmLabelBarWidthF 	= 1.2
  res@pmLabelBarOrthogonalPosF 	= .17           ; move whole thing down
  res@gsnCenterStringFontHeightF = 0.03
@@ -206,7 +206,7 @@ do j=0,dimsizes(exps)-1
   res@cnMinLevelValF	 = -40	     ; set min contour level for HIST Z500
   res@cnMaxLevelValF	 = 40	     ; set max contour level for HIST Z500
   res@cnLevelSpacingF	 = 8	     ; set contour spacing for HIST Z500
-  sres@cnInfoLabelString = "Line interval 1 hPa"
+  sres@cnInfoLabelString = "MSLP interval 1 hPa"
  else
 ; values for ATL_HIST & PAC_HIST 
   sres@cnMinLevelValF	 := -2	     ; set min contour level for ATL_HIST & PAC_HIST MSLP
@@ -215,7 +215,7 @@ do j=0,dimsizes(exps)-1
   res@cnMinLevelValF	 := -20	     ; set min contour level for ATL_HIST & PAC_HIST Z500
   res@cnMaxLevelValF	 := 20	     ; set max contour level for ATL_HIST & PAC_HIST Z500
   res@cnLevelSpacingF	 := 4	     ; set contour spacing for ATL_HIST & PAC_HIST Z500
-  sres@cnInfoLabelString = "Line interval 0.5 hPa"
+  sres@cnInfoLabelString = "MSLP interval 0.5 hPa"
  end if
 ;******************************************************************************************************************
 
@@ -256,7 +256,7 @@ end do ; j
  res@cnLevelSpacingF	= 8	    ; set contour spacing for 20CR Z500
 
  res@gsnCenterString 	= "20CR"
- sres@cnInfoLabelString = "Line interval 1 hPa"
+ sres@cnInfoLabelString = "MSLP interval 1 hPa"
  maps(0) = gsn_csm_contour_map_overlay(wks,obs_avg_hgt,obs_avg_slp_hPa,res,sres)
  maps(0) = add_map_tickmarks(wks,maps(0),tmres)
 ;******************************************************************************************************************** 
@@ -267,7 +267,7 @@ end do ; j
  resP@gsnFrame         	= False  		; don't advance panel plot
  resP@gsnPanelLabelBar 	= False  		; add common colorbar	    
  resP@gsnPanelBottom   	= 0.05		       ; add space at bottom ; turn off ususally
- resP@gsnPanelMainString 	= "MSLP and Z500 during the hottest heatwaves"     ; new resource added in NCL V6.4.0
+; resP@gsnPanelMainString 	= "MSLP and Z500 during the hottest heatwaves"     ; commented out panel title
  resP@gsnPanelFigureStrings	= (/"~F22~a","~F22~b","~F22~c","~F22~d"/) ; add strings to panel
  resP@gsnPanelFigureStringsPerimOn = False
  resP@amJust   		= "TopLeft"

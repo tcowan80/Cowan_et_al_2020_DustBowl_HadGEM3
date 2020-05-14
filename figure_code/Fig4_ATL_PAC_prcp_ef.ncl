@@ -104,14 +104,15 @@ end if
  res@tmYROn 			= False
  res@tmXTOn 			= False  
 
- res@gsnCenterStringFontHeightF = 0.02
+ res@gsnCenterStringFontHeightF = 0.015
  res@tiYAxisFontHeightF 	= 0.035
  res@tiYAxisFontColor 		= "black"
  res@tiYAxisString 		= ""  
  
- opt = True   ; resources for bootstrapping
- opt@gsnShadeFillType = "pattern" ; pattern fill 
- opt@gsnShadeHigh = 17 
+; resources for bootstrapping
+ opt 			= True   
+ opt@gsnShadeFillType 	= "pattern" ; pattern fill 
+ opt@gsnShadeHigh 	= 17 
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -151,13 +152,13 @@ end if
 
 ;******************************************************************************************************************
 ; map resources for lat/lon labels 
- tmres = True
- tmres@tmYLValues = ispan(20,60,10)
- tmres@tmYRLabelFontHeightF = 0.015
- tmres@tmXBValues = ispan(-135,-30,15)
- tmres@tmXBLabelFontHeightF = 0.015
- tmres@tmYLLabelFontHeightF = 0.015
- tmres@YUseLeft = False
+ tmres 				= True
+ tmres@tmYLValues 		= ispan(20,60,10)
+ tmres@tmYRLabelFontHeightF 	= 0.015
+ tmres@tmXBValues 		= ispan(-135,-30,15)
+ tmres@tmXBLabelFontHeightF 	= 0.015
+ tmres@tmYLLabelFontHeightF 	= 0.015
+ tmres@YUseLeft 		= False
 ;******************************************************************************************************************
 
 ;******************************************************************************************************************
@@ -258,7 +259,7 @@ do i=0,dimsizes(vars)-1
   res@vpHeightF		= 0.25		   ; change aspect ratio of plot
   res@vpWidthF 		= 0.325        
   res@vpXF     		= 0.1		      ; start plot at x ndc coord 
-  res@vpYF     		= 0.8		      ; start plot at y ndc coord   
+  res@vpYF     		= 0.72		      ; start plot at y ndc coord   
   res@gsnLeftString 	= "~F22~a"
   res@gsnLeftStringFontHeightF = 0.02
   res@lbBoxEndCapStyle 	= "TriangleBothEnds"
@@ -270,8 +271,8 @@ do i=0,dimsizes(vars)-1
   long_name 		= "Evaporative fraction"
   res@lbTitleString    	= "(~F18~U~F21~10~S~-1~N~)"
   res@vpXF     		= 0.525		   
-  res@vpYF     		= 0.8		   
-  res@tiMainString    	= "~F33~D~F21~(ATL~B~HIST~N~, PAC~B~HIST~N~)"
+  res@vpYF     		= 0.72		   
+;  res@tiMainString    	= "~F33~D~F21~(ATL~B~HIST~N~, PAC~B~HIST~N~)" ; title of panels (a) and (b) commented out now.
   res@tiMainOffsetXF 	= -0.23
   res@tiMainFontHeightF = 0.025
   res@gsnLeftString 	= "~F22~b" 
@@ -488,8 +489,8 @@ end do ; k
  resTS@gsnLeftStringFontHeightF 	= 0.02
  resTS@gsnLeftStringOrthogonalPosF 	= 0.02
  resTS@gsnLeftString 			= "~F22~c"
- resTS@gsnCenterString 			= "Precipitation"
- resTS@gsnCenterStringFontHeightF 	= 0.02
+; resTS@gsnCenterString 		= "Precipitation"  ; commented out now
+; resTS@gsnCenterStringFontHeightF 	= 0.02		; commented out now
  
  resTS@tiYAxisString 		= "mm day~S~-1~N~"
  resTS@tiYAxisFontHeightF 	= 0.015
@@ -505,13 +506,13 @@ end do ; k
  resTS@tmYLTickSpacingF	:= 0.08 
 
  resTS@tiYAxisString 	= ""
- resTS@tiMainString    	:= "~F21~HIST & bare soil runs"
+; resTS@tiMainString    	:= "~F21~HIST & bare soil runs"  ; title of panels (c) and (d) commented out.
  resTS@tiMainOffsetXF 	= -0.23
  resTS@tiMainFontHeightF = 0.025 
  resTS@trYMinF  	:= 0.44   ; min value on y-axis
  resTS@trYMaxF  	:= 0.74   ; max value on y-ax 
  resTS@gsnLeftString 	= "~F22~d"
- resTS@gsnCenterString 	= "Evaporative fraction"
+; resTS@gsnCenterString 	= "Evaporative fraction"
 
  maps(3)  = gsn_csm_xy (wks,month_list,ef_both,resTS) ; create plot
 ;**************************************************************************************************

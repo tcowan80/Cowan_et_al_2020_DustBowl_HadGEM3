@@ -165,7 +165,7 @@ end if
  res2@pmLabelBarWidthF 		= 0.6; 0.6
  res2@pmLabelBarParallelPosF 	= 0.3; 1.05           ; move labelbar across
  res2@pmLabelBarOrthogonalPosF 	= 0.10          ; move labelbar down
- res2@lbTitleString 		= "days per summer" ; bar title 
+ res2@lbTitleString 		= "HWF (days per summer)" ; bar title 
  res2@lbTitleFontHeightF	= 0.02; 0.015
  res2@lbTitlePosition	  	= "Bottom"			       ; title location
  res2@lbTitleDirection	  	= "Across"			      ; letter angle  
@@ -234,10 +234,10 @@ end if
  resTS@trXMinF  		= 1910		      ; min value on y-axis
  resTS@trXMaxF  		= 2012		      ; max value on y-axis
  resTS@tmXTOn 			= False
- resTS@gsnCenterString 		= "~F21~ Observed & simulated TXx anomalies"
+ resTS@gsnCenterString 		= ""; "~F21~  Observed & simulated TXx anomalies" ; older version title
  resTS@gsnCenterStringOrthogonalPosF 	= 0.05
  resTS@tiXAxisString 		= "~F21~ Year"
- resTS@tiYAxisString 		= "~F21~ ~S~o~N~C"
+ resTS@tiYAxisString 		= "~F21~ TXx (~S~o~N~C)"
  resTS@tiXAxisFontHeightF 	= 0.015
  resTS@tiYAxisFontHeightF 	= 0.015
  resTS@gsnLeftString 		= "~F22~ a"
@@ -359,7 +359,7 @@ do i=0,3
   infile_sst 		= addfile("BEST_SST_"+met+"_"+"globe"+\
   			"_"+subreg+"_max_time_pattern_1-100yrs_"+rm+"years_rm_"+seas+".nc","r")
   sst 			= infile_sst->sst
-  res@gsnCenterString 	= "~F22~b~F21~ Observed (Years 1930-1940)" ;  ("+decimalPlaces(dec_ave,1,True)+"%)"
+  res@gsnCenterString 	= "~F22~b~F21~ Observed";  (Years 1930-1940)" ;  ("+decimalPlaces(dec_ave,1,True)+"%)"
 ; land sea mask
   a 			= addfile("$NCARG_ROOT/lib/ncarg/data/cdf/landsea.nc","r")
   lsm 			:= landsea_mask(a->LSMASK,sst&latitude,sst&longitude)
@@ -407,7 +407,7 @@ do i=0,3
   avg_hwf 		:= dim_avg_n_Wrap(hwf,0)
   
 ; plot out SST
-  res@gsnCenterString 	:= "~F22~c~F21~ GFDL-ESM2G (Years 286-296)" 
+  res@gsnCenterString 	:= "~F22~c~F21~ GFDL-ESM2G";  (Years 286-296)" 
   res@vpXF            	= 0.375         
   res@vpWidthF        	= 0.3    
   res@vpYF            	= 0.55
@@ -770,7 +770,7 @@ end if ; i.eq.2
 
 ; do plot
   res@lbLabelBarOn	 = True  
-  res@lbTitleString	 = "days per summer" ; bar title
+  res@lbTitleString	 = "HWF (days per summer)" ; bar title
   res@lbTitlePosition	 = "Right"
   res@lbTitleAngleF	 = 90
   res@lbTitleFontHeightF = 0.012
@@ -798,11 +798,11 @@ end if ; i.eq.2
   res@cnLinesOn 	 = False    ; no contour lines
   res@cnLineLabelsOn	 = False    ; no contour line labels
   res@cnInfoLabelOn	 = False 
-  res@tiXAxisString	 = "PDO (normalized)"
-  res@tiYAxisString	 = "AMO (normalized)"
+  res@tiXAxisString	 = "PDO normalized"
+  res@tiYAxisString	 = "AMO normalized"
   res@tiXAxisFontHeightF = 0.012
   res@tiYAxisFontHeightF = 0.012
-  res@gsnCenterString		= "~F22~d~F21~ CMIP5 piControl HWF"
+  res@gsnCenterString		= "~F22~d~F21~ CMIP5";  HWF"
   res@cnLevelSelectionMode	= "ExplicitLevels"   ; set explicit contour levels
   res@cnLevels		 = (/4,5,6,7,8,9/)
   res@cnFillColors	 = (/12,13,14,15,16,18,20/)
